@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 *,
 ::after,
@@ -40,8 +40,8 @@ html {
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
 
-  --headingFont: "Roboto Condensed", Sans-Serif;
-  --bodyFont: "Cabin", Sans-Serif;
+  --headingFont: "Lato", sans-serif;
+  --bodyFont: "Lato", sans-serif;
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
 

@@ -40,6 +40,7 @@ export const Register = () => {
       dispatch(loginUser({ email: email, password: password }));
       return;
     }
+
     dispatch(registerUser({ name, email, password }));
   }
 
@@ -82,13 +83,13 @@ export const Register = () => {
           handleChange={handleChange}
         />
 
-        <button type="submit" className="btn btn-block" disabled={isLoading}>
+        <button type="submit" className="" disabled={isLoading}>
           {isLoading ? "loading..." : "submit"}
         </button>
 
         <button
           type="button"
-          className="btn btn-block btn-hipster"
+          className=""
           disabled={isLoading}
           onClick={() => {
             dispatch(
