@@ -14,7 +14,9 @@ export const registerUserThunk = async (url, user, thunkAPI) => {
 
 export const loginUserThunk = async (url, user, thunkAPI) => {
   try {
-    await rootURL.post(url, user);
+    await rootURL.post(url, user, {
+      withCredentials: true,
+    });
 
     const response = await axios.get("/users/current-user", {
       withCredentials: true,
