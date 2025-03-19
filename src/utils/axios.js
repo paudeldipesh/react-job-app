@@ -3,7 +3,7 @@ import { getUserFromLocalStorage } from "./localStorage";
 import { clearStore } from "../features/user/userSlice";
 
 export const rootURL = axios.create({
-  baseURL: "https://jobify-prod.herokuapp.com/api/v1/toolkit",
+  baseURL: "https://mern-job-app-tyd0.onrender.com/api",
 });
 
 rootURL.interceptors.request.use((configuration) => {

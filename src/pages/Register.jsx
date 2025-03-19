@@ -92,7 +92,7 @@ export const Register = () => {
           disabled={isLoading}
           onClick={() => {
             dispatch(
-              loginUser({ email: "testUser@test.com", password: "secret" })
+              loginUser({ email: "testuser@gmail.com", password: "testuser" })
             );
           }}
         >
