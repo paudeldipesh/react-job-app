@@ -11,7 +11,7 @@ import {
   updateUserThunk,
   clearStoreThunk,
 } from "./userThunk.js";
-import { jwtDecode } from "jwt-decode";
+import { rootURL } from "../../utils/axios.js";
 
 const initialState = {
   isLoading: false,
@@ -86,7 +86,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         const { msg } = action.payload;
 
-        axios
+        rootURL
           .get("/users/current-user", { withCredentials: true })
           .then((response) => {
             const { user } = response.data;
