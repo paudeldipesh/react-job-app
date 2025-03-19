@@ -84,10 +84,10 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { user } = action.payload;
+        const { message, user } = action.payload;
         state.user = user;
         addUserToLocalStorage(user);
-        toast.success(`Welcome ${user.name}`);
+        toast.success(`${message}: ${user.name}`);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;

@@ -14,15 +14,15 @@ export const registerUserThunk = async (url, user, thunkAPI) => {
 
 export const loginUserThunk = async (url, user, thunkAPI) => {
   try {
-    await rootURL.post(url, user, {
+    const { data: message } = await rootURL.post(url, user, {
       withCredentials: true,
     });
 
-    const response = await axios.get("/users/current-user", {
+    const { data: user } = await axios.get("/users/current-user", {
       withCredentials: true,
     });
 
-    return response.data;
+    return { message, user };
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data.msg);
   }
