@@ -11,6 +11,7 @@ import {
   updateUserThunk,
   clearStoreThunk,
 } from "./userThunk.js";
+import { jwtDecode } from "jwt-decode";
 
 const initialState = {
   isLoading: false,
