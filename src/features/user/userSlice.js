@@ -84,10 +84,19 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { message, user } = action.payload;
-        state.user = user;
-        addUserToLocalStorage(user);
-        toast.success(`${message}: ${user.name}`);
+        const { msg } = action.payload;
+
+        axios
+          .get("/users/current-user", { withCredentials: true })
+          .then((response) => {
+            const { user } = response.data;
+            state.user = user;
+            addUserToLocalStorage(user);
+            toast.success(`${msg}: ${user.name}`);
+          })
+          .catch((error) => {
+            toast.error(error.response?.data?.msg || "An error occurred");
+          });
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
