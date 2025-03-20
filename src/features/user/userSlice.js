@@ -11,7 +11,6 @@ import {
   updateUserThunk,
   clearStoreThunk,
 } from "./userThunk.js";
-import { rootURL } from "../../utils/axios.js";
 
 const initialState = {
   isLoading: false,
@@ -39,7 +38,7 @@ export const loginUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   "user/updateUser",
   async (user, thunkAPI) => {
-    return updateUserThunk("/users/update-user", user, thunkAPI);
+    return updateUserThunk("/auth/updateUser", user, thunkAPI);
   }
 );
 
@@ -84,19 +83,10 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { msg } = action.payload;
-
-        rootURL
-          .get("/users/current-user", { withCredentials: true })
-          .then((response) => {
-            const { user } = response.data;
-            state.user = user;
-            addUserToLocalStorage(user);
-            toast.success(`${msg}: ${user.name}`);
-          })
-          .catch((error) => {
-            toast.error(error.response?.data?.msg || "An error occurred");
-          });
+        const { user } = action.payload;
+        state.user = user;
+        addUserToLocalStorage(user);
+        toast.success(`Welcome: ${user.name}`);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;

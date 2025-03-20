@@ -3,7 +3,7 @@ import { getUserFromLocalStorage } from "./localStorage";
 import { clearStore } from "../features/user/userSlice";
 
 export const rootURL = axios.create({
-  baseURL: "https://mern-job-app-tyd0.onrender.com/api",
+  baseURL: "https://redux-toolkit-jobster-api-server.onrender.com/api/v1",
 });
 
 rootURL.interceptors.request.use((configuration) => {
